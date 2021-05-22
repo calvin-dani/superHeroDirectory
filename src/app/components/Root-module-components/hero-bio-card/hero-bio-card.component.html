@@ -1,0 +1,48 @@
+<div class="card-template">
+  <nz-card
+    style="margin-top: 16px; min-height: 60vh; width: 100%"
+    [nzLoading]="loading"
+    [hidden]="!loading"
+    nzHoverable
+    class="cards"
+  >
+    <nz-card-meta></nz-card-meta>
+  </nz-card>
+  <nz-card
+    [nzCover]="coverTemplate"
+    *ngFor="let hero of heroes"
+    [hidden]="loading"
+    (click)="clickCard(hero)"
+    nzHoverable
+  >
+    <ng-template #coverTemplate>
+      <img [alt]="hero.name" [src]="hero.image" />
+    </ng-template>
+    <nz-card-meta
+      style="font-size: 14px"
+      [nzTitle]="hero.name"
+      [nzDescription]="hero.fullname"
+    ></nz-card-meta>
+    <br />
+    <ng-container>
+      <label for="aliases">Aliases</label>
+      <ul>
+        <li id="aliases" *ngFor="let alias of hero.aliases">
+          {{ alias }}
+        </li>
+      </ul>
+    </ng-container>
+    <ng-container>
+      <label for="Alignment">Alignment</label>
+      <ng-container id="Alignment">
+        <p>{{ hero.alignment | titlecase }}</p>
+      </ng-container>
+    </ng-container>
+    <ng-container>
+      <label for="POB">Place of Birth</label>
+      <ng-container id="POB">
+        <p>{{ hero["place-of-birth"] }}</p>
+      </ng-container>
+    </ng-container>
+  </nz-card>
+</div>

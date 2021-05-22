@@ -1,0 +1,58 @@
+<div class="home-bio-body">
+  <div class="home-bio-form">
+    <form
+      nz-form
+      nz-row
+      #form="ngForm"
+      [nzLayout]="'inline'"
+      (ngSubmit)="cardComponent.onSubmit(form)"
+    >
+      <nz-form-control>
+        <nz-input-group>
+          <input
+            type="text"
+            name="heroName"
+            nz-input
+            placeholder="Enter the heroes name "
+            [(ngModel)]="heroName"
+            required
+            pattern="[\D]*"
+            #heroInput="ngModel"
+          />
+        </nz-input-group>
+        <div [hidden]="invalid">
+          <nz-alert
+            nzType="error"
+            nzMessage="Error"
+            nzDescription="Bruh... Search with a name"
+            nzShowIcon
+          >
+          </nz-alert>
+        </div>
+      </nz-form-control>
+
+      <button nz-button nzType="default">
+        <i nz-icon nzType="search"></i>Search
+      </button>
+      <div [hidden]="notfound">
+        <nz-alert
+          nzType="info"
+          nzMessage="Hero not found.. Search for a better one. HINT: batman"
+          nzShowIcon
+        ></nz-alert>
+      </div>
+    </form>
+  </div>
+  <app-hero-bio-card
+    #cardComponent
+    [heroName]="heroName"
+    (sendInvalidInput)="handleInvalidInput($event)"
+    (sendNotFound)="handleNotfound($event)"
+    (beenClicked)="handleOnClick($event)"
+  ></app-hero-bio-card>
+  <app-hero-bio-m
+    [isVisible]="makeVisible"
+    [heroModal]="heroModalData"
+    (modalResetVisibilty)="handleResetVisibilty($event)"
+  ></app-hero-bio-m>
+</div>

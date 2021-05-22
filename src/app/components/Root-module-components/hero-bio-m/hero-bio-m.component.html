@@ -1,0 +1,49 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="heroModal.name"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  nzMaskClosable
+  nzWidth="max-content"
+  [nzFooter]="null"
+>
+  <ng-container *nzModalContent>
+    <div class="modalDesign">
+      <div class="heroImg">
+        <img [src]="heroModal.image" />
+      </div>
+      <div>
+        <h1>{{ heroModal.name }}</h1>
+        <p>Full Name:{{ heroModal.fullname }}</p>
+        <p>Place of Birth:{{ heroModal["place-of-birth"] }}</p>
+        <p>Gender: {{ heroModal.gender }}</p>
+        <p>Race: {{ heroModal.race }}</p>
+        <p>Occupation: {{ heroModal.occupation }}</p>
+        <p>Relatives:</p>
+        <ul>
+          <li *ngFor="let realtive of heroModal.relatives">
+            {{ realtive }}
+          </li>
+        </ul>
+      </div>
+      <div>
+        <p>Alignment: {{ heroModal.alignment | titlecase }}</p>
+        <p>Aliases</p>
+        <ul>
+          <li *ngFor="let alias of heroModal.aliases">
+            {{ alias }}
+          </li>
+        </ul>
+        <p>Base: {{ heroModal.base }}</p>
+        <p>Height: {{ heroModal.height }}</p>
+        <p>Weight: {{ heroModal.weight }}</p>
+        <p>Powerstats</p>
+        <ul>
+          <li *ngFor="let powerStatKey of heroModal.powerstats | keyvalue">
+            {{ powerStatKey.key | titlecase }}: {{ powerStatKey.value }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </ng-container>
+</nz-modal>

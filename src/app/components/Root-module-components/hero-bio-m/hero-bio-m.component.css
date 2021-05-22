@@ -1,0 +1,12 @@
+.modalDesign {
+  display: grid;
+  grid-template-columns: 35% 1fr 1fr;
+}
+
+.modalDesign > div {
+  padding: 1 rem;
+}
+
+.heroImg {
+  overflow: auto;
+}

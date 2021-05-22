@@ -1,0 +1,9 @@
+.compare-card {
+  display: grid;
+  height: min-content;
+  grid: auto / auto 80% auto;
+}
+
+p {
+  grid-column-start: 2;
+}

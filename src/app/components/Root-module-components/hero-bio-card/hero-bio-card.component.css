@@ -1,0 +1,5 @@
+.card-template {
+  display: grid;
+  grid: auto-flow auto / repeat(3, 1fr);
+  grid-gap: 1rem;
+}

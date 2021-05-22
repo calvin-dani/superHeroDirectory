@@ -1,0 +1,20 @@
+.home-bio-body {
+  display: grid;
+  height: 100%;
+  grid: auto / auto 80% auto;
+}
+
+.home-bio-form {
+  grid-column-start: 2;
+  display: grid;
+  grid: min-content / auto;
+}
+
+app-hero-bio-card {
+  grid-column-start: 2;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 80% auto;
+}
